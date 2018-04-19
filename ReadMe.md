@@ -1,8 +1,8 @@
 # MARAS
 
-This repository (https://bitbucket.org/divamqp/diva-maras) contains the code for the Multi-Drug Adverse Reaction Analytics Strategy (MARAS) system. 
+This [repository](https://github.com/WPI-MIAP/DIVA-MARAS) contains the code for the Multi-Drug Adverse Reaction Analytics Strategy (MARAS) system. 
 
-The MARAS directory contains the java code for the MARAS system, including pre-processing, drug and reaction parsing, data mining, and output for visualization (see https://bitbucket.org/divamqp/diva-node-web). 
+The MARAS directory contains the java code for the MARAS system, including pre-processing, drug and reaction parsing, data mining, and output for visualization (see https://github.com/WPI-MIAP/react-diva-app). 
 
 The diva-docs repository contains the markdown files for our report.
 
@@ -32,7 +32,7 @@ The MARAS system can be manually run using the java code, running App.java. Comm
 
 MetaMap processes should be running separately when the system is started.
 
-To best emulate the process used by the DIVA system, use the maras.sh wrapper script contained in the [DIVA repository](https://bitbucket.org/divamqp/diva-node-web), which handles launching MetaMap automatically.
+To best emulate the process used by the DIVA system, use the maras.sh wrapper script contained in the [DIVA repository](https://github.com/WPI-MIAP/react-diva-app), which handles launching MetaMap automatically.
 
 ## Output
 
