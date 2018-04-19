@@ -1,0 +1,144 @@
+---
+title: "Multiple-Drug Interaction Analytics Platform"
+subtitle: | 
+    Developing a Minimum Viable Web Application for Visualizing Multi-drug 
+    Interactions
+author:
+  - Brian McCarthy
+  - Andrew Schade
+  - Huy Tran
+  - Brian Zylich
+institute: Worcester Polytechnic Institute
+bibliography: sources.bib
+documentclass: scrreprt
+abstract: |
+    Abstract {.unnumbered}
+    ======================
+    
+    Hundreds of thousands of patients report unwanted symptoms from using one or more drugs each year. 
+    It is virtually impossible to test every drug combination before a drug reaches the market. In this 
+    project, we reimplement and integrate two previously proposed tools to mine and visualize interesting 
+    pairs of drugs from report data, focusing on creating a single web application that is functional and 
+    maintainable. Furthermore, we research and implement new features including drug and reaction name 
+    standardization. Upon finishing development, we conduct a user study and technical evaluation to ensure 
+    our system meets the requirements and improve usability. Based on the results of our studies, we improve 
+    the usability and identify areas that require further attention.
+
+acknowledgements: |
+    Acknowledgements {.unnumbered}
+    ==============================
+    
+    This project would not have been possible without the help of our faculty
+    advisor, Prof. Elke Rundensteiner, and our graduate student mentors, Tabassum
+    Kakar and Xiao Qin. They provided extensive guidance and feedback throughout our development
+    efforts. Additionally, we would like to thank Prof. Lane Harrison for his guidance, especially
+    with the data visualization and user evaluation aspects of the project.
+    We are thankful to Worcester Polytechnic Institute and the Computer Science department
+    for providing us with the opportunity to work on this project.
+
+    We would also like to thank Ermal Toto and the WPI ARC for providing the
+    computational resources to host our application on the web, facilitating testing and evaluation.
+
+    Finally, we would like to thank the FDA for their assistance in establishing
+    requirements for our project and providing some (redacted) data essential for demonstrating the capabilities of our project.
+
+summary: |
+    Executive Summary {.unnumbered}
+    ===============================
+    
+    Every year, more than 100,000 deaths and 2 million hospitalizations are 
+    caused by the side effects of prescription drugs or the unintended 
+    interactions from taking multiple drugs simultaneously. These adverse drug reactions (ADRs) are one of the leading 
+    causes of death worldwide. While extensive clinical trials are conducted to identify the ADRs associated with 
+    a single drug before that drug reaches the market, it is virtually impossible to test how a drug will interact with every other 
+    drug or combination of drugs. Therefore, multi-drug adverse reactions (MDARs) are identified primarily after the drug 
+    reaches the market. Healthcare professionals and consumers are encouraged to submit reports through the FDA’s Adverse Event 
+    Reporting System (FAERS) in the event that they witness or experience what they believe may be an ADR. Safety evaluators with 
+    the FDA then analyze these reports to identify groups of drugs that cause an adverse reaction when taken together. To assist FDA 
+    safety evaluators with their goal of identifying MDARs, Xiao Qin and Tabassum Kakar developed the Multi-Drug Adverse Reaction 
+    Analytics Strategy (MARAS) system and also designed a visual paradigm, which they called Drug-Drug Interactions via Visual Analysis (DIVA).
+    These systems harness association rule 
+    mining to identify potential MDARs from FAERS reports and provide an interactive visualization of the 2-drug rules mined by MARAS, 
+    respectively.
+
+    The goal of our project was to develop a minimum viable product to demonstrate how Kakar and Qin’s work could be used to assist 
+    FDA safety evaluators. To do this, we unified the MARAS and DIVA systems into a single application, the Multi-drug Interaction 
+    Analytics Platform (MIAP). While developing MIAP, we completely reimplemented the MARAS and DIVA systems to facilitate their unification 
+    into one system and their future maintainability. Throughout the process, we improved the MARAS technology by adding smarter drug name and 
+    adverse reaction processing. We also improved the DIVA system by increasing visual appeal and overall usability. Finally, we conducted 
+    a usability evaluation to test how MIAP matched up against the requirements specified by Kakar and Qin’s cooperative research with the 
+    FDA and highlight areas that could use improvement.
+
+    Currently, FDA safety analysts are confronted with the challenge of sifting through millions of new reports each year in search of MDARs. 
+    For now, these personnel are approaching this task without the support of software for mining potential interactions, visualization of 
+    these interactions, or the screening of potential interactions based on confidence scores or association with severe adverse reactions. 
+    This means that safety analysts have to spend time scanning through reports before prioritizing potential drug combinations for further 
+    investigation. Then, when they have prioritized the drug combinations of interest, they must retrieve all reports related to each drug 
+    combination before applying domain knowledge to determine how to proceed with a clinical investigation or potential drug regulation.
+
+    With the assistance of MIAP, the prioritization of potential MDARs and subsequent analysis of those MDARs is simplified. Filters can be 
+    applied to the visualization to look at the MDARs with the highest confidence scores. These drugs can then be sorted by the severity 
+    of the associated adverse reactions. Then, all of the reports associated with the drug or hypothesized MDAR can be retrieved with the 
+    click of a button.
+
+    While much of the functionality of MIAP was previously available in the MARAS and DIVA systems, there are several notable improvements. 
+    The previous MARAS system was composed of multiple programming languages, lacked documentation, and did not take full advantage of 
+    Object-Oriented programming concepts. Additionally, MARAS did not perform any cleaning on drug names or adverse reaction names, and did 
+    not label mined rules as known or unknown. Meanwhile, the previous DIVA system also lacked sufficient documentation and was completely 
+    separate from the MARAS system. Thus it required manual intervention to move files between the two systems.
+
+    As a result of this project, the new MARAS system was reimplemented using just one programming language and taking advantage of encapsulation 
+    and object generation. Additionally, javadoc-style documentation was used to provide internal and external guidance on the use of the system. 
+    MARAS now performs cleaning on drug names and adverse reactions to assist in the rule mining and known-rule labeling processes. The DIVA 
+    system also underwent a complete reimplementation, separating each feature into its own component file and adding javadoc-style comments for future 
+    developers. Finally, MIAP unifies MARAS and DIVA, meaning that no manual intervention is required to go between the user interface for 
+    visualization and the rule mining process, and vice versa.
+
+    With the addition of these new features, users can now upload FAERS data via the user interface, automatically starting the MARAS analysis 
+    on the new data combined with all previously uploaded data. Then, when the MARAS analysis finishes, the users’ visualization will be updated 
+    automatically. With improved usability aspects, it will be easier than ever to prioritize and analyze MDARs. Lastly, with refactored code and 
+    extensive documentation, future developers will be able to more easily contribute to this project. This project will serve as a better 
+    model should the FDA choose to adopt a similar application in support of their drug safety investigation.
+
+    Upon completion of this project, we have developed a list of recommendations for improvements that can be made to MIAP in the future. These 
+    recommendations are as follows:
+
+    1. Add a database to store reports and rules in order to decrease the time of retrieving information about specific reports or drugs.
+
+    2. Improve the usability of the Reports View and add annotation functionality to allow FDA safety analysts the ability to give domain insight directly within our tool.
+
+    3. Allow for the visualization of custom datasets or a subset of the existing dataset, as we currently have chosen to support only appending new data from FAERS into our tool.
+
+    4. Conduct an evaluation with FDA personnel to ensure MIAP meets their needs, receive additional suggestions, and determine whether they agree 
+    with the metaphors currently employed in MIAP.    
+
+lot: true
+lof: true
+tol: true
+autoSectionLabels: true
+subfigGrid: true
+codeBlockCaptions: true
+date: '21 March, 2018'
+nocite: |
+  @*
+
+# header-includes: |
+#   \makeatletter
+#   \@ifpackageloaded{subfig}{}{\usepackage{subfig}}
+#   \@ifpackageloaded{caption}{}{\usepackage{caption}}
+#   \captionsetup[subfloat]{margin=0.5em}
+#   \AtBeginDocument{%
+#   \renewcommand*\figurename{Figure}
+#   \renewcommand*\tablename{Table}
+#   }
+#   \AtBeginDocument{%
+#   \renewcommand*\listfigurename{List of Figures}
+#   \renewcommand*\listtablename{List of Tables}
+#   }
+#   \@ifpackageloaded{float}{}{\usepackage{float}}
+#   \floatstyle{ruled}
+#   \@ifundefined{c@chapter}{\newfloat{codelisting}{!htp}{lop}}{\newfloat{codelisting}{!htp}{lop}[chapter]}
+#   \floatname{codelisting}{Listing}
+#   \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+#   \makeatother
+...
